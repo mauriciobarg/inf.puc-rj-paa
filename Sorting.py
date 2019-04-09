@@ -34,8 +34,33 @@ def InsertionSort(A):
     return A
 
 def MergeSort(A):
-    pass
+    def Merge(B, C):
+        n, m = len(B), len(C)
+        i, j = 0, 0
+        merged = []
+        while i < n and j < m:
+            if B[i] < C[j]:
+                merged.append(B[i])
+                i += 1
+            else:
+                merged.append(C[j])
+                j += 1
+        while i < n:
+            merged.append(B[i])
+            i += 1
+        while j < m:
+            merged.append(C[j])
+            j += 1
+        return merged
+    n = len(A)
+    if n > 1:
+        mid = n // 2
+        left = A[:mid]
+        right = A[mid:]
+        return Merge(MergeSort(left), MergeSort(right))
+    else:
+        return A
 
 print(V)
-print(InsertionSort(V))
+print(MergeSort(V))
 
