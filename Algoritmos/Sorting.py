@@ -61,6 +61,3 @@ def MergeSort(A):
     else:
         return A
 
-print(V)
-print(MergeSort(V))
-
