@@ -1,7 +1,7 @@
 from random import randint
 from math import inf
 
-V = [randint(-5, 5) for x in range(5)]
+V = [randint(-100, 100) for x in range(100)]
 # V = [-5, -1, -4, -2, -3]
 # V = [-1, 0, 1, -10, -10]
 ## O(n^3)
@@ -39,21 +39,24 @@ def On2(A):
                 j_max = j - 1
     return(soma_max, i_max, j_max)
 
+## O(n)
 def On(A):
     n = len(A)
     soma_max = -inf
     soma_aux = 0
     k = 0
     i = 0
+    i_aux = 0
     j = 0
     while k < n:
         soma_aux += A[k]
         if soma_aux > soma_max:
             soma_max = soma_aux
+            i = i_aux
             j = k
         if soma_aux < 0:
             soma_aux = 0
-            i = k
+            i_aux = k + 1
         k += 1
 
     return(soma_max, i, j)
